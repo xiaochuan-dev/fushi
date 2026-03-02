@@ -143,3 +143,37 @@ int main() {
 
 #### 字符串操作
 
+```cpp
+#include <cstdio>
+#include <cmath> 
+#include <string>
+#include <cstring> 
+#include <algorithm>
+
+using namespace std;
+
+int main() {
+	string s = "hello world";
+	
+	string s1 = s + "hhhhhh";
+	int l = s.length();
+	char ch1 = s[0];
+	
+	bool b1 = s == "hello world";
+	bool b2 = s != "hello world";
+	bool b3 = s <= "hello worlf"; //字典序比较 
+	
+	int p1 = s.find("o"); 
+	int p2 = s.find("world");
+	int p3 = s.find("hhhh"); 		// 这是-1 
+	
+	bool b4 = s.empty(); 
+
+
+	string s2 = s.substr(3, 4);		// 从index开始截取n个 
+	
+	printf("input is %s\n", s.c_str());
+	return 0;
+}
+ 
+```
