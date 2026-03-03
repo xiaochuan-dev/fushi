@@ -177,3 +177,135 @@ int main() {
 }
  
 ```
+
+#### 字符串转换
+
+```cpp
+#include <cstdio>
+#include <cctype>
+#include <cstdlib> 
+#include <string>
+
+using namespace std;
+
+int main() {
+	// isalpha判断是不是字母 
+	bool b1 = isalpha('a');
+	bool b2 = isalpha('1');
+	bool b3 = isdigit('4');		// 判断是不是数字字符 
+	
+	bool b4 = isalnum('4');		// 判断是不是数字或者字母 
+	string str = "123";
+    int n1 = std::stoi(str);	// 注意，std::stoi cpp11版本才能使用
+	int n2 = atoi(str.c_str()); 	// atoi 把char* 转换成整数
+	long n3 = atol(str.c_str());	// atol把char* 转换为long
+	double b5 = atof("43.4314");	// atof把char*转换为double 
+	
+	return 0;
+}
+```
+
+### cpp数据结构
+
+#### vector
+
+```cpp
+#include <cstdio>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	vector<int> v1;			// 初始化长度默认为0
+	vector<int> v2(10);		// 初始化长度为10, 默认元素都是0
+	vector<int> v3(10, 2);	// 初始化长度为10，元素为2 
+	
+	int n1 = v3.size();		// 获取当前的长度
+	
+	v3.push_back(10);      // 尾部添加
+	v3.pop_back();         // 尾部删除
+
+	int num1 = v3.front();	// 第一个元素 
+	int num2 = v3.back();	// 最后一个元素 
+	 	
+	return 0;
+}
+```
+
+#### set
+
+```cpp
+#include <cstdio>
+#include <set>
+
+using namespace std;
+
+int main() {
+	set<int> s1;		// 元素唯一自动排序
+	s1.insert(3);
+	s1.insert(1);
+	
+	s1.erase(1);
+	
+	bool e1 = s1.count(3); 		// 这个函数只能返回1或者0，可以直接用来判断在不在set里面
+	bool e2 = s1.count(1); 
+	
+	s1.insert(0);
+	
+	for (set<int>::iterator it = s1.begin(); it != s1.end(); it++) {
+		printf("%d\n", *it);
+	}
+
+	return 0;
+}
+```
+
+
+#### map
+```cpp
+#include <cstdio>
+#include <map>
+#include <string>
+
+using namespace std;
+
+int main() {
+	map<int, string> m;
+	m.insert(make_pair(3, "world"));
+	m.insert(make_pair(1, "hello")); 		// 通过pair插入 
+	
+	bool b1 = m.count(3);			// 判断是否存在 
+	bool b2 = m.count(2);
+	
+	// 如果已经判断存在的话直接通过[]获取
+	string s = m[3]; 
+	
+	m.erase(1);			// 按照key来删除 
+	
+	
+	return 0;
+}
+```
+
+#### stack
+
+```cpp
+#include <cstdio>
+#include <stack> 
+
+using namespace std;
+
+int main() {
+	stack<int> s;
+	s.push(3);
+	s.push(1);
+	s.push(2);
+	
+	int n1 = s.top();
+	s.pop();		// stl的stack pop函数不返回值 
+	
+	bool b = s.empty();
+	
+	return 0;
+}
+```
