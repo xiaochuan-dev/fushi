@@ -262,6 +262,8 @@ int main() {
 
 
 #### map
+
+map像set一样也会自动排序
 ```cpp
 #include <cstdio>
 #include <map>
@@ -282,7 +284,15 @@ int main() {
 	
 	m.erase(1);			// 按照key来删除 
 	
-	
+	// 下面是类似于java中treemap的操作
+
+	// 找到大于参数的第一个元素 ， 注意这里迭代器解引用之后是一个pair ， 还有一个函数是lower_bound
+	map<int, string>::iterator it = m.upper_bound(2);
+	if (it != m.end()) {
+		pair<int ,string> s = *it;
+		printf("found, key is %d value is %s\n", s.first, s.second.c_str());	
+	}
+
 	return 0;
 }
 ```
@@ -305,6 +315,93 @@ int main() {
 	s.pop();		// stl的stack pop函数不返回值 
 	
 	bool b = s.empty();
+	
+	return 0;
+}
+```
+
+#### queue
+
+```cpp
+#include <cstdio>
+#include <queue> 
+
+using namespace std;
+
+int main() {
+	queue<int> q;
+	// 入队 
+	q.push(4);
+	q.push(2);
+	q.push(1);
+	q.push(3);
+	
+	
+	int num1 = q.front();
+	int num2 = q.back();
+	
+	q.pop();		// 出队，同样不返回值 
+	
+	
+	while (!q.empty()) {
+		printf("%d\n", q.front());
+		q.pop();
+	}
+	return 0;
+}
+```
+
+#### deque
+
+```cpp
+#include <cstdio>
+#include <deque> 
+
+using namespace std;
+
+int main() {
+	deque<int> dq;
+	dq.push_back(3);
+	dq.push_front(1);
+	int num1 = dq.front();
+	int num2 = dq.back();
+	dq.pop_back();
+	dq.pop_back(); 
+
+	return 0;
+}
+```
+
+#### priority_queue
+
+```cpp
+#include <cstdio>
+#include <vector> 
+#include <queue> 
+#include <functional>
+
+using namespace std;
+
+int main() {
+	// 默认是最大堆 
+	priority_queue<int> pq;
+	pq.push(3);
+	pq.push(5);
+	int num1 = pq.top(); 
+	
+	pq.pop(); 	// 不返回值，stl的pop函数都不返回值
+	
+	// 最小堆，这里最后两个 > > 之间必须有空格 
+	
+	priority_queue<int, std::vector<int>, std::greater<int> > minHeap;
+	minHeap.push(4);
+	minHeap.push(2);
+	minHeap.push(3);
+	
+	while (!minHeap.empty()) {
+		printf("top is %d\n", minHeap.top());
+		minHeap.pop();
+	}
 	
 	return 0;
 }
