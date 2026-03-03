@@ -406,3 +406,60 @@ int main() {
 	return 0;
 }
 ```
+
+### algorithm
+
+排序
+
+```cpp
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+#include <functional>
+
+using namespace std;
+
+int main() {
+	
+	int arr[] = {3, 1, 2, 4};
+	int n = sizeof(arr) / sizeof(int);
+	sort(arr, arr + n);		// 默认升序 
+	
+	int arr1[] = {3, 1, 2, 4};
+	int n1 = sizeof(arr1) / sizeof(int);
+	sort(arr1, arr1 + n1, greater<int>());		// 降序 
+	
+	vector<int> v;
+	v.push_back(5);
+	v.push_back(3);
+	v.push_back(4);
+	v.push_back(2);
+	sort(v.begin(), v.end());  // 默认升序，也可以加fucntional里面的greater<int>()函数变成降序 
+	int num1 = v[0];
+	
+	return 0;
+}
+```
+
+第k大元素
+
+```cpp
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+#include <functional>
+
+using namespace std;
+
+int main() {
+	
+	int arr[] = {3, 1, 2, 4, 0};
+	// 第二大的元素index在1,第一参数是开始的指针，第三参数是结尾指针 
+	nth_element(arr, arr + 1, arr + 5);
+	
+	int res = arr[1];
+	
+	return 0;
+}
+```
+
