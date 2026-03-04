@@ -463,3 +463,76 @@ int main() {
 }
 ```
 
+查找下一个大于指定值的元素
+
+`upper_bound`是找到第一个小于等于值的元素，默认也是使用在升序数组中，
+```cpp
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	vector<int> v;
+	v.push_back(4);
+	v.push_back(2);
+	v.push_back(1);
+	
+	sort(v.begin(), v.end());
+	
+	
+	// 找到大于等于自己的元素，默认用在升序数组 
+	vector<int>::iterator it = lower_bound(v.begin(), v.end(), 2);
+	// 告诉编译器这是降序数组
+    // vector<int>::iterator it2 = lower_bound(v.begin(), v.end(), 3, greater<int>());
+	
+	if (it != v.end()) {
+		int pos = it - v.begin();
+		printf("found %d position is %d\n", *it, pos);
+	}
+}
+```
+
+反转数组
+```cpp
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	vector<int> v;
+	v.push_back(4);
+	v.push_back(2);
+	v.push_back(1);
+	
+	reverse(v.begin(), v.end());
+	return 0;
+}
+```
+
+下一个排列
+```cpp
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> v;
+    v.push_back(2);
+    v.push_back(1);
+    v.push_back(3);
+    
+    do {
+        for (int i = 0; i < v.size(); i++) {
+            cout << v[i] << " ";
+        }
+        cout << endl;
+    } while (next_permutation(v.begin(), v.end()));
+    
+    return 0;
+}
+```
