@@ -274,7 +274,9 @@ using namespace std;
 int main() {
 	map<int, string> m;
 	m.insert(make_pair(3, "world"));
-	m.insert(make_pair(1, "hello")); 		// 通过pair插入 
+	m.insert(make_pair(1, "hello")); 		// 通过pair插入  ， 注意这里只能插入新值，如果key存在会失败
+
+	m[1] = "dfff";		// 直接更新
 	
 	bool b1 = m.count(3);			// 判断是否存在 
 	bool b2 = m.count(2);
