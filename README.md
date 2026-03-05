@@ -299,6 +299,23 @@ int main() {
 }
 ```
 
+#### list
+
+list双向链表
+
+```cpp
+
+list<int>::iterator it = l.begin();
+cout << "初始位置: " << *it << endl;  // 0
+    
+// 向前移动3步
+advance(it, 3);
+
+l.insert(it, 4); 		// 插入it后的位置
+
+
+```
+
 #### stack
 
 ```cpp
