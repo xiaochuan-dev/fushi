@@ -311,7 +311,7 @@ cout << "初始位置: " << *it << endl;  // 0
 // 向前移动3步
 advance(it, 3);
 
-l.insert(it, 4); 		// 插入it后的位置
+l.insert(it, 4); 		// 插入it前的位置
 
 
 ```
